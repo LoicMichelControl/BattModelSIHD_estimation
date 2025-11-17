@@ -3,9 +3,7 @@
 
 ## Overview
 
-This repository presents a proof-of-concept application of the  
-Semi-Implicit Homogeneous Differentiation (SIHD) technique to the estimation of a  
-Li-ion battery equivalent circuit model, composed of four parallel first-order ODEs.
+This repository presents a proof-of-concept application of the Semi-Implicit Homogeneous Differentiation (SIHD) technique to the estimation of a Li-ion battery equivalent circuit model, composed of four parallel first-order ODEs.
 
 The simulated battery follows a classical 2-RC equivalent circuit with thermal dynamics.
 
@@ -17,18 +15,18 @@ The simulated battery follows a classical 2-RC equivalent circuit with thermal d
 
 $$
 \begin{aligned}
-\dot{\mathrm{SoC}} &= -\frac{I}{Q_{\text{nom}}}, \\[6pt]
-\dot{V}_{RC1} &= -\frac{V_{RC1}}{R_1 C_1} + \frac{I}{C_1}, \\[6pt]
-\dot{V}_{RC2} &= -\frac{V_{RC2}}{R_2 C_2} + \frac{I}{C_2}, \\[6pt]
-\dot{T} &= \frac{I^2\,(R_s + R_1 + R_2) - (T - T_{\text{amb}})/R_{\text{th}}}{C_{\text{th}}}.
+\dot{\mathrm{SoC}} &= -\frac{I}{Q_{\text{nom}}}, \\
+\dot{V}_{RC1} &= -\frac{V_{RC1}}{R_1 C_1} + \frac{I}{C_1}, \\
+\dot{V}_{RC2} &= -\frac{V_{RC2}}{R_2 C_2} + \frac{I}{C_2}, \\
+\dot{T} &= \frac{I^2 (R_s + R_1 + R_2) - (T - T_{\text{amb}})/R_{\text{th}}}{C_{\text{th}}}.
 \end{aligned}
 $$
 
 These equations describe the evolution of:
 - the State of Charge (SoC),  
-- the RC branch voltage \(V_{RC1}\),  
-- the RC branch voltage \(V_{RC2}\),  
-- the temperature \(T\).
+- the RC branch voltage $V_{RC1}$,  
+- the RC branch voltage $V_{RC2}$,  
+- the temperature $T$.
 
 The objective is to analyse the behavior of the SIHD observer when applied to 
 a multi-state, decoupled, current-driven system.
@@ -39,7 +37,8 @@ a multi-state, decoupled, current-driven system.
 
 To obtain a prediction of each state, SIHD relies on a zero-initialized duplicate model, acting as a *minimal* Luenberger-type observer, which:
 - does not attempt to match the real initial conditions;
-- only provides a prediction error, used by SIHD to update its internal states;
+- only provides a prediction error, used by SIHD to update its internal states.
+
 Each ODE branch (SoC, RC1, RC2, T) is treated independently.
 
 In this preliminary work, the terminal voltage \(V_t\) is not injected into the SIHD loop.  
@@ -68,8 +67,8 @@ The primary objective is to investigate the intrinsic convergence properties of 
 IEEE Trans. on Automatic Control, 57(5):1087–1101, 2012.
 
 [2] L. Michel, M. Ghanes, Y. Aoustin, and J.-P. Barbot.  
-*An interconnected discrete-time cascaded semi-implicit differentiation.*  
-17th International Workshop on Variable Structure Systems (VSS 2024), Accepted.  
+*An interconnected discrete time cascaded semi-implicit differentiation.*  
+17th International Workshop on Variable Structure Systems (VSS), Abu Dhabi, United Arab Emirates, 2024, pp. 164-169.
 <https://hal.science/hal-04564290/>
 
 [3] L. Michel, M. Ghanes, Y. Aoustin, J.-P. Barbot.  
